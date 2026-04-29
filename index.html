@@ -347,34 +347,34 @@
             style="perspective: 1000px;">
 
             <!-- Ganesh -->
-            <div class="ganesh-container mb-8 tilt-card animate-in" style="transform: translateZ(30px);">
-                <img src="ganesh.png" alt="Lord Ganesha" class="w-16 h-16 object-contain"
+            <div class="ganesh-container mb-8 tilt-card animate-in overflow-hidden" style="transform: translateZ(30px);">
+                <img src="ganesh.png" alt="Lord Ganesha" class="w-full h-full object-cover rounded-full"
                     style="mix-blend-mode: multiply; filter: sepia(20%) saturate(80%);">
             </div>
 
-            <!-- Inviting You -->
-            <p class="section-label mb-8 animate-in delay-1"
-                style="color: var(--gold-dark); background: linear-gradient(135deg, rgba(232, 213, 168, 0.25) 0%, rgba(196, 154, 60, 0.08) 100%); border: 1px solid rgba(196, 154, 60, 0.15); transform: translateZ(10px);">
-                Inviting You
-            </p>
-
             <!-- Together with their families -->
-            <p class="serif italic text-lg tracking-wide mb-6 animate-in delay-2"
+            <p class="serif italic text-lg tracking-wide mb-6 animate-in delay-1"
                 style="color: var(--text-soft); font-weight: 500;">
                 Together with their families
             </p>
 
             <!-- Parents - Groom Side -->
-            <div class="parent-block mb-5 animate-in delay-3" style="color: var(--text-mid);">
+            <div class="parent-block mb-5 animate-in delay-2" style="color: var(--text-mid);">
                 <p class="serif text-xl font-semibold leading-relaxed">Sri Mutyala Suryachandra Rao</p>
-                <p class="serif text-xl font-semibold leading-relaxed">&amp; Smt Kanakadurga (Late)</p>
+                <p class="serif text-xl font-semibold leading-relaxed">&amp; Smt Kanakadurga</p>
             </div>
 
             <!-- Parents - Bride Side -->
-            <div class="parent-block mb-10 animate-in delay-3" style="color: var(--text-mid);">
+            <div class="parent-block mb-8 animate-in delay-2" style="color: var(--text-mid);">
                 <p class="serif text-xl font-semibold leading-relaxed">Sri Sattinedi Eswara Rao</p>
                 <p class="serif text-xl font-semibold leading-relaxed">&amp; Smt Sridevi</p>
             </div>
+
+            <!-- Inviting You -->
+            <p class="section-label mb-6 animate-in delay-3"
+                style="font-size: 10px; letter-spacing: 0.2em; color: var(--gold-dark); background: linear-gradient(135deg, rgba(232, 213, 168, 0.25) 0%, rgba(196, 154, 60, 0.08) 100%); border: 1px solid rgba(196, 154, 60, 0.15); transform: translateZ(10px);">
+                INVITING YOU TO THE WEDDING OF
+            </p>
 
             <!-- Names -->
             <h1 class="great-vibes gold-text mb-4 animate-in delay-4"
@@ -471,8 +471,12 @@
 
         <!-- ===== BLESSINGS SECTION ===== -->
         <section class="min-h-[55vh] flex items-center justify-center px-6 py-16">
-            <div class="glass-card p-12 w-full text-center">
-                <p class="great-vibes gold-text mb-4" style="font-size: 2.5rem;">
+            <div class="glass-card p-12 w-full text-center relative overflow-hidden">
+                <!-- Couple Background Image (Add couple.jpg to root folder) -->
+                <div class="absolute inset-0 z-0 opacity-20" style="background: url('couple.jpg') center/cover no-repeat; mix-blend-mode: multiply;"></div>
+                
+                <div class="relative z-10">
+                    <p class="great-vibes gold-text mb-4" style="font-size: 2.5rem;">
                     Bless the Couple
                 </p>
                 <div class="ornament-divider">
@@ -486,6 +490,7 @@
                 <p class="mt-10 great-vibes text-3xl" style="color: var(--rose);">
                     With love, Eswar <span style="color: #E8637A; font-size: 0.8em;">♥</span> Geetha
                 </p>
+                </div>
             </div>
         </section>
 
