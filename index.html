@@ -182,7 +182,8 @@
         }
 
         /* Map button — refined */
-        .map-btn {
+        .map-btn,
+        .cal-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -200,9 +201,17 @@
             background: linear-gradient(135deg, rgba(196, 154, 60, 0.04) 0%, rgba(232, 213, 168, 0.08) 100%);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
-        .map-btn::before {
+        .cal-btn {
+            border-color: var(--rose);
+            color: var(--rose-deep);
+            background: linear-gradient(135deg, rgba(194, 86, 110, 0.04) 0%, rgba(242, 196, 206, 0.08) 100%);
+        }
+
+        .map-btn::before,
+        .cal-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -213,6 +222,10 @@
             transition: left 0.5s ease;
         }
 
+        .cal-btn::before {
+            background: linear-gradient(90deg, transparent, rgba(194, 86, 110, 0.15), transparent);
+        }
+
         .map-btn:hover {
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
             color: white;
@@ -220,8 +233,25 @@
             transform: translateY(-2px);
         }
 
-        .map-btn:hover::before {
+        .cal-btn:hover {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
+            color: white;
+            box-shadow: 0 6px 24px rgba(194, 86, 110, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .map-btn:hover::before,
+        .cal-btn:hover::before {
             left: 100%;
+        }
+
+        /* Button row for map + calendar side by side */
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Scroll indicator */
@@ -347,7 +377,8 @@
             style="perspective: 1000px;">
 
             <!-- Ganesh -->
-            <div class="ganesh-container mb-8 tilt-card animate-in overflow-hidden" style="transform: translateZ(30px);">
+            <div class="ganesh-container mb-8 tilt-card animate-in overflow-hidden"
+                style="transform: translateZ(30px);">
                 <img src="ganesh.png" alt="Lord Ganesha" class="w-full h-full object-cover rounded-full"
                     style="mix-blend-mode: multiply; filter: sepia(20%) saturate(80%);">
             </div>
@@ -389,7 +420,7 @@
             </div>
 
             <!-- Full Names -->
-            <p class="text-xs tracking-[0.25em] mt-3 font-semibold animate-in delay-6" style="color: var(--rose);">
+            <p class="text-xs tracking-[0.25em] mt-3 font-semibold animate-in delay-6" style="color: var(--text-soft);">
                 MUTYALA DURGA MALLESWARA RAO &nbsp;•&nbsp; SATTINEDI GEETHAVANI
             </p>
 
@@ -409,11 +440,21 @@
                     Wedding Muhurtham
                 </p>
 
-                <p class="gold-text font-bold" style="font-size: clamp(1.8rem, 6vw, 2.5rem); line-height: 1.2; font-family: 'Montserrat', sans-serif;">May 8<span style="font-size: 0.55em; vertical-align: super;">th</span> 2026</p>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                    <p class="gold-text font-bold"
+                        style="font-size: clamp(1.8rem, 6vw, 2.5rem); line-height: 1.2; font-family: 'Montserrat', sans-serif;">
+                        May 8<span style="font-size: 0.55em; vertical-align: super;">th</span> 2026</p>
+                    <button onclick="saveToCalendar('muhurtham')" class="cal-btn" style="font-size: 9px; padding: 6px 16px;">
+                        📅 Save Date
+                    </button>
+                </div>
 
                 <div style="color: var(--text);">
-                    <p class="font-bold" style="font-size: clamp(1.6rem, 5.5vw, 2.2rem); font-family: 'Montserrat', sans-serif; letter-spacing: 0.05em;">02:16 AM</p>
-                    <p class="serif italic text-sm mt-1" style="color: var(--text-soft); font-weight: 500;">Friday Night / Saturday Early Morning (9th May)</p>
+                    <p class="font-bold"
+                        style="font-size: clamp(1.6rem, 5.5vw, 2.2rem); font-family: 'Montserrat', sans-serif; letter-spacing: 0.05em;">
+                        02:16 AM</p>
+                    <p class="serif italic text-sm mt-1" style="color: var(--text-soft); font-weight: 500;">Friday Night
+                        / Saturday Early Morning (9th May)</p>
                 </div>
 
                 <div class="ornament-divider">
@@ -444,8 +485,17 @@
                     Dinner
                 </p>
 
-                <p class="gold-text font-bold" style="font-size: clamp(1.5rem, 5vw, 2rem); line-height: 1.2; font-family: 'Montserrat', sans-serif;">May 8<span style="font-size: 0.55em; vertical-align: super;">th</span> 2026</p>
-                <p class="font-bold" style="font-size: clamp(1.1rem, 4vw, 1.25rem); color: var(--text-mid); font-family: 'Montserrat', sans-serif; letter-spacing: 0.03em;">7:00 PM Onwards</p>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                    <p class="gold-text font-bold"
+                        style="font-size: clamp(1.5rem, 5vw, 2rem); line-height: 1.2; font-family: 'Montserrat', sans-serif;">
+                        May 8<span style="font-size: 0.55em; vertical-align: super;">th</span> 2026</p>
+                    <button onclick="saveToCalendar('dinner')" class="cal-btn" style="font-size: 9px; padding: 6px 16px;">
+                        📅 Save Date
+                    </button>
+                </div>
+                <p class="font-bold"
+                    style="font-size: clamp(1.1rem, 4vw, 1.25rem); color: var(--text-mid); font-family: 'Montserrat', sans-serif; letter-spacing: 0.03em;">
+                    7:00 PM Onwards</p>
 
                 <div class="ornament-divider">
                     <span>✦</span>
@@ -473,23 +523,25 @@
         <section class="min-h-[55vh] flex items-center justify-center px-6 py-16">
             <div class="glass-card p-12 w-full text-center relative overflow-hidden">
                 <!-- Couple Background Image (Add couple.jpg to root folder) -->
-                <div class="absolute inset-0 z-0 opacity-20" style="background: url('couple.jpg') center/cover no-repeat; mix-blend-mode: multiply;"></div>
-                
+                <div class="absolute inset-0 z-0 opacity-20"
+                    style="background: url('couple.jpg') center/cover no-repeat; mix-blend-mode: multiply;"></div>
+
                 <div class="relative z-10">
                     <p class="great-vibes gold-text mb-4" style="font-size: 2.5rem;">
-                    Bless the Couple
-                </p>
-                <div class="ornament-divider">
-                    <span>♥</span>
-                </div>
-                <p class="serif italic text-lg mt-6 leading-relaxed" style="color: var(--text-mid); font-weight: 500;">
-                    Your presence and blessings would mean<br>
-                    the world to us as we begin this<br>
-                    beautiful journey together.
-                </p>
-                <p class="mt-10 great-vibes text-3xl" style="color: var(--rose);">
-                    With love, Eswar <span style="color: #E8637A; font-size: 0.8em;">♥</span> Geetha
-                </p>
+                        Bless the Couple
+                    </p>
+                    <div class="ornament-divider">
+                        <span>♥</span>
+                    </div>
+                    <p class="serif italic text-lg mt-6 leading-relaxed"
+                        style="color: var(--text-mid); font-weight: 500;">
+                        Your presence and blessings would mean<br>
+                        the world to us as we begin this<br>
+                        beautiful journey together.
+                    </p>
+                    <p class="mt-10 great-vibes text-3xl" style="color: var(--rose);">
+                        With love, Eswar <span style="color: #E8637A; font-size: 0.8em;">♥</span> Geetha
+                    </p>
                 </div>
             </div>
         </section>
@@ -639,6 +691,60 @@
                     ease: "power2.out"
                 });
             });
+        }
+
+        // --- SAVE TO CALENDAR (.ics) ---
+        function saveToCalendar(event) {
+            let title, start, end, location, description;
+
+            if (event === 'muhurtham') {
+                title = 'Eswar & Geetha — Wedding Muhurtham';
+                // May 9, 2026 02:16 AM IST (UTC+5:30) → May 8, 2026 20:46 UTC
+                start = '20260508T204600Z';
+                end = '20260509T003000Z';  // ~4 hours
+                location = 'Somaramam Sri Someswara Swamy Temple, Gunupudi, Bhimavaram';
+                description = 'Wedding Muhurtham of Eswar & Geetha at 02:16 AM IST (Friday Night / Saturday Early Morning).';
+            } else if (event === 'dinner') {
+                title = 'Eswar & Geetha — Wedding Dinner';
+                // May 8, 2026 7:00 PM IST → May 8, 2026 13:30 UTC
+                start = '20260508T133000Z';
+                end = '20260508T173000Z';  // ~4 hours
+                location = 'Indukuri Suryanarayana Raju Kalyana Mandapam, Gunupudi, Bhimavaram';
+                description = 'Wedding Dinner for Eswar & Geetha at 7:00 PM IST onwards.';
+            }
+
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Eswar Geetha Wedding//EN',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
+                'BEGIN:VEVENT',
+                'DTSTART:' + start,
+                'DTEND:' + end,
+                'SUMMARY:' + title,
+                'DESCRIPTION:' + description,
+                'LOCATION:' + location,
+                'STATUS:CONFIRMED',
+                'SEQUENCE:0',
+                'BEGIN:VALARM',
+                'TRIGGER:-PT1H',
+                'ACTION:DISPLAY',
+                'DESCRIPTION:Reminder',
+                'END:VALARM',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = title.replace(/[^a-zA-Z0-9]/g, '_') + '.ics';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
     </script>
 </body>
